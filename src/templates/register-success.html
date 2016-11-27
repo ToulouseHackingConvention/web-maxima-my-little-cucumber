@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Register</h2>
+
+<div class="alert alert-success">Successfully registered!</div>
+
+<p>Welcome <strong>{{ username }}</strong>, please wait while you are redirected..</p>
+
+<meta http-equiv="refresh" content="2; URL=/">
+{% endblock %}

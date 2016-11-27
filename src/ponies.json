@@ -1,0 +1,11 @@
+[
+    {"name": "Palkeo", "url": "palkeo.png", "desc": "Palkeo greyhat pony!"},
+    {"name": "Toto", "url": "real-1.jpg", "desc": "A real pink pony. WTF?"},
+    {"name": "Tata", "url": "real-2.jpg", "desc": "He is so cute, isn't he?"},
+    {"name": "Rainbow Dash", "url": "rainbow-dash.png", "desc": "She maintains the weather and clears the skies in Ponyville. As a huge fan of the Wonderbolts, she becomes a reservist member of the elite flying group"},
+    {"name": "Fluttershy", "url": "fluttershy.png", "desc": "She lives in a small cottage near the Everfree Forest and takes care of animals, the most prominent of her charges being Angel the bunny."},
+    {"name": "Pinkie Pie", "url": "pinkie-pie.png", "desc": "Pinkie is energetic and sociable, and she represents the element of laughter. She works at Sugarcube Corner and lives on the bakery's second floor with Gummy, her pet toothless baby alligator."},
+    {"name": "Applejack", "url": "applejack.png", "desc": "She lives and works at Sweet Apple Acres with her grandmother Granny Smith, her older brother Big McIntosh, her younger sister Apple Bloom, and her dog Winona."},
+    {"name": "Rarity", "url": "rarity.png", "desc": "She is Sweetie Belle's older sister and the subject of Spike's long-term crush. Rarity works as both a fashion designer and as a seamstress at her own shop in Ponyville, the Carousel Boutique."},
+    {"name": "Twilight Sparkle", "url": "twilight-sparkle.png", "desc": "She is a female unicorn pony who transforms into an Alicorn and becomes a princess in Magical Mystery Cure. She is also the daughter of Twilight Velvet and Night Light, the younger sister of Shining Armor, sister-in-law to Princess Cadance, and paternal aunt to Flurry Heart."}
+]

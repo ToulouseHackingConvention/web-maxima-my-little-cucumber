@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Vote for your favorite pony!</h1>
+
+{% for pony in ponies %}
+<div class="panel panel-primary">
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">
+            {{ pony.name }} - {{ pony.votes|default(0, true) }} votes
+        </h3>
+        <div class="pull-right">
+        {% if request.user.is_authenticated() %}
+            {% if not request.user.vote_pony_id %}
+                <a href="/vote/{{ pony.id }}" class="btn btn-default btn-sm">Favorite</a>
+            {% elif request.user.vote_pony_id == pony.id %}
+                <a href="/unvote" class="btn btn-default btn-sm active">Favorite</a>
+            {% endif %}
+        {% endif %}
+        </div>
+    </div>
+    <div class="panel-body">
+        <a href="#" class="description-link" data-id="{{ pony.id }}">
+            <img src="/static/img/{{ pony.url }}" alt="{{ pony.name }}" class="img-responsive center-block" />
+        </a>
+    </div>
+</div>
+{% endfor %}
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Description</h4>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+
+<script type="text/javascript">
+$(function() {
+    $('.description-link').click(function(e) {
+        id = $(e.currentTarget).data('id');
+        $.ajax({
+            url: "/description.php?inc=" + encodeURIComponent(id)
+        }).done(
+            function(data) {
+                $('#basicModal').modal({
+                    backdrop: true
+                });
+                $('.modal-body').html(data);
+            }
+            );
+        e.preventDefault();
+    });
+});
+</script>
+{% endblock %}

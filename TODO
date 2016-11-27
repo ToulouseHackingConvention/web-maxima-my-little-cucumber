@@ -1,0 +1,3 @@
+* Améliorer le Dockerfile (nginx, database mysql)
+* Améliorer le solving_script.py (faire en sorte que le requestb.in sois créé automatiquement)
+* Écrire le WRITEUP.md
