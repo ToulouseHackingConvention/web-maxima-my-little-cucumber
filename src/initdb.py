@@ -3,7 +3,7 @@ from app import create_app
 import json
 
 if __name__ == '__main__':
-    app = create_app()
+    app = create_app('my-little-cucumber')
 
     with app.app_context():
         from models import db, Pony

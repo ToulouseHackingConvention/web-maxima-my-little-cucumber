@@ -1,3 +1,3 @@
-* Améliorer le Dockerfile (nginx, database mysql)
-* Améliorer le solving_script.py (faire en sorte que le requestb.in sois créé automatiquement)
+* Améliorer le Dockerfile (database mysql)
+* Vérifier qu'une fois avec un shell, on ne peut pas détruire le chall
 * Écrire le WRITEUP.md
