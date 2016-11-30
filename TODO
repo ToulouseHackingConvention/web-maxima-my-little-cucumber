@@ -1,3 +1,4 @@
 * Améliorer le Dockerfile (database mysql)
 * Vérifier qu'une fois avec un shell, on ne peut pas détruire le chall
 * Écrire le WRITEUP.md
+* Voir pour le exec python3 init.db

@@ -4,8 +4,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-web
+    links:
+      - db:db
     expose:
       - "8000"
+    environment:
+      MYSQL_HOST: db:3306
+      MYSQL_DATABASE: mylittlecucumber_db
+      MYSQL_USER: mylittlecucumber
+      MYSQL_PASSWORD: CIGyJIIC2wSE8JSXRpCp
   nginx:
     build:
       context: .
@@ -14,3 +21,14 @@ services:
       - web:web
     ports:
       - "80:80"
+  db:
+    image: mysql:latest
+    expose:
+      - "3306"
+    volumes:
+      - /var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: NSxZoYmykPRFgYHeqp4oH
+      MYSQL_DATABASE: mylittlecucumber_db
+      MYSQL_USER: mylittlecucumber
+      MYSQL_PASSWORD: CIGyJIIC2wSE8JSXRpCp

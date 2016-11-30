@@ -10,8 +10,9 @@ if __name__ == '__main__':
 
         db.create_all()
 
-        with open('ponies.json') as f:
-            for pony in json.load(f):
-                db.session.add(Pony(pony['name'], pony['url'], pony['desc']))
+        if Pony.query.count() == 0:
+            with open('ponies.json') as f:
+                for pony in json.load(f):
+                    db.session.add(Pony(pony['name'], pony['url'], pony['desc']))
 
         db.session.commit()
