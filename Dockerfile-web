@@ -6,12 +6,11 @@ RUN apt-get update && apt-get upgrade -y
 # install dependencies
 RUN apt-get install -y python3 python3-flask python3-crypto python3-flask-sqlalchemy \
                        uwsgi uwsgi-plugin-python3 \
-                       nginx supervisor \
                        curl wget netcat
 
-ADD src /var/www/src
+ADD src/web /var/www/src
+ADD src/flag.txt /var/www/src/flag.txt
 
-# configure website
 WORKDIR /var/www/src
 
 RUN find . -type f -exec chmod 644 '{}' \; && \
@@ -22,18 +21,6 @@ RUN find . -type f -exec chmod 644 '{}' \; && \
     chown www-data:www-data /tmp/database.db && chmod 660 /tmp/database.db && \
     mv flag.txt /flag
 
-# configure nginx
-WORKDIR /etc/nginx
+EXPOSE 8000
 
-RUN echo "daemon off;" >> nginx.conf && \
-    rm sites-enabled/default && \
-    mv /var/www/src/nginx.conf sites-enabled/default
-
-# configure supervisord
-WORKDIR /etc/supervisor
-
-RUN mv /var/www/src/supervisord.conf conf.d/supervisord.conf
-
-EXPOSE 80
-
-CMD ["supervisord"]
+CMD ["uwsgi", "--ini", "/var/www/src/uwsgi.ini"]

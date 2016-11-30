@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-web
+    expose:
+      - "8000"
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    links:
+      - web:web
+    ports:
+      - "80:80"

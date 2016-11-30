@@ -20,7 +20,7 @@ lancer `make run`
 
 Hey man, I don't know about you but I hate these ponies.. Could you help me put that website down?
 
-http://127.0.0.1:5000
+http://localhost
 
 You should be able to get a shell
 

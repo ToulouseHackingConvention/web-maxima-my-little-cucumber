@@ -1,25 +1,24 @@
-IMAGE = web-maxima-my-little-cucumber:1.1
-CONTAINER = my-little-cucumber
+image:
+	docker-compose build
 
-image: Dockerfile
-	docker build -t $(IMAGE) .
+build: image
 
 run:
-	docker run -d -p 80:80 --name $(CONTAINER) $(IMAGE)
+	docker-compose up -d
 
 logs:
-	-docker logs $(CONTAINER)
+	docker-compose logs
 
 stop:
-	-docker stop $(CONTAINER)
+	docker-compose stop
 
 export:
 
-clean: stop
-	-docker rm $(CONTAINER)
+clean:
+	docker-compose down
 	rm -rf export
 
 clean-all: clean
-	-docker rmi $(IMAGE)
+	docker-compose down --rmi all
 
-.PHONY: image run logs stop export clean clean-all
+.PHONY: image build run logs stop export clean clean-all
