@@ -1,20 +1,7 @@
-# Auteur
+# My Little Cucumber
 
-Maxime Arthaud <maxime@arthaud.me>
-
-# Type de challenge
-
-Web
-
-# Infos Challenge (description candidat, fichier fourni, nom final du challenge)
-
-## Build
-
-Pour build l'image docker, lancer `make build`
-
-## Lancer le container
-
-lancer `make run`
+- Auteur: Maxime Arthaud <maxime@arthaud.me>
+- Type: Web
 
 ## Description
 
@@ -22,16 +9,55 @@ Hey man, I don't know about you but I hate these ponies.. Could you help me put 
 
 http://localhost
 
-You should be able to get a shell
+You should be able to get a shell.
 
-# Comment tester
+-- Martin Carton
 
-# A-t-il été relu et si oui par qui  
+## Fichiers fournis
 
-# A-t-il été testé et si oui par qui  
+None
 
-# Le déploiement a-t-il été relu si oui par qui  
+## Construire l'image docker
 
-# Le déploiement a-t-il été testé si oui par qui  
+`make build`
 
-# Le chall a-t-il été intégré à un docker-compose général et si oui lequel et par qui
+## Lancer le container
+
+`make run`
+
+## Obtenir les fichiers fournis
+
+None
+
+## Modifier le flag
+
+Modifier `src/flag.txt` puis `make build`
+
+## Voir les logs du container
+
+`make logs`
+
+## Nettoyer
+
+`make clean` supprime les containers et les fichiers fournis
+`make clean-all` supprime aussi les images
+
+## État
+
+### Relecture
+
+- Maxima
+
+### Test
+
+- Maxima
+
+### Déploiement
+
+- Maxima
+
+### Relecture Déploiement
+
+### Test Déploiement
+
+### Docker-compose
