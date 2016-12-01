@@ -5,10 +5,9 @@ build: image
 
 run:
 	docker-compose up -d
-	sleep 5 && docker-compose exec web python3 initdb.py
 
 logs:
-	docker-compose logs
+	docker-compose logs -f
 
 stop:
 	docker-compose stop

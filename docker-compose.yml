@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-web
+    command: sh -c "sleep 40 && python3 initdb.py && uwsgi --ini uwsgi.ini"
     links:
       - db:db
     expose:
