@@ -1,6 +1,6 @@
 # My Little Cucumber
 
-- Auteur: Maxime Arthaud <maxime@arthaud.me>
+- Author: Maxime Arthaud < maxime@arthaud.me >
 - Type: Web
 
 ## Description
@@ -13,51 +13,31 @@ You should be able to get a shell.
 
 -- Martin Carton
 
-## Fichiers fournis
+## Files provided to the challengers
 
 None
 
-## Construire l'image docker
+## Build the docker image
 
 `make build`
 
-## Lancer le container
+## Run the docker container
 
 `make run`
 
-## Obtenir les fichiers fournis
+## Get the provided files
 
 None
 
-## Modifier le flag
+## Update the flag
 
-Modifier `src/flag.txt` puis `make build`
+Update `src/flag.txt` then `make build`
 
-## Voir les logs du container
+## Show container logs
 
 `make logs`
 
-## Nettoyer
+## Clean
 
-`make clean` supprime les containers et les fichiers fournis
-`make clean-all` supprime aussi les images
-
-## État
-
-### Relecture
-
-- Maxima
-
-### Test
-
-- Maxima
-
-### Déploiement
-
-- Maxima
-
-### Relecture Déploiement
-
-### Test Déploiement
-
-### Docker-compose
+* `make clean` removes the container
+* `make clean-all` removes the container and the docker image
